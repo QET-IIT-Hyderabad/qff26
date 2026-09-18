@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200" role="img" aria-label="Company logo coming soon">
+  <rect width="400" height="200" fill="none"/>
+  <g fill="none" stroke="#6b5b95" stroke-width="3" opacity="0.6">
+    <rect x="60" y="60" width="80" height="80" rx="6"/>
+    <circle cx="240" cy="100" r="42"/>
+  </g>
+  <text x="200" y="180" text-anchor="middle" font-family="'Courier New', monospace" font-size="15" letter-spacing="2" fill="#b9a7e0">LOGO COMING SOON</text>
+</svg>

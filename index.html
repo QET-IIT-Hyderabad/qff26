@@ -583,23 +583,49 @@
     // SPEAKERS — photo + name + field + about + talk + website, mapped to days
     // Drop real photos into images/speakers/ using the filenames below.
     // Until a file exists, the img onerror handler falls back to the placeholder.
+    // Industry talks use a company logo (logoDark/logoLight) instead of a portrait.
     const PLACEHOLDER = 'images/speakers/placeholder.svg';
+    const LOGO_PLACEHOLDER = 'images/logos/placeholder.svg';
     const speakers = [
-      { name:'Alok Kumar Pan', field:'Quantum Foundations · Faculty', talk:'Foundations of Quantum Mechanics & Nonlocality', about:'Researcher in quantum foundations and nonlocality, probing the limits of quantum theory.', web:'#', photo:'images/speakers/alok-kumar-pan.jpg', days:['fri'] },
-      { name:'Sangkha',        field:'Quantum Computing · Faculty',   talk:'Non-Markovian Feedback for Optimized Quantum Error Correction', about:'Researcher in Quantum Computing and Machine Learning', web:'https://www.iith.ac.in/phy/sangkha.borah/', photo:'images/speakers/sangkha.jpg', days:['fri'] },
-      { name:'Animesh Taqbit', field:'Quantum Software',              talk:'Talk title to be announced', about:'Works on quantum software and developer tooling across the Qiskit stack.', web:'#', photo:'images/speakers/animesh-taqbit.jpg', days:['sat'] },
-      { name:'Bijita',         field:'Qiskit · Beginners Track',      talk:'Your First Quantum Circuit with Qiskit', about:'Leads the beginners track — from zero to your first working quantum circuit.', web:'#', photo:'images/speakers/bijita.jpg', days:['sat'] },
-      { name:'Archak',         field:'Quantum Algorithms',            talk:'Deep Dive: Variational Quantum Algorithms', about:'Focuses on variational quantum algorithms and hands-on Qiskit deep dives.', web:'#', photo:'images/speakers/archak.jpg', days:['sun'] },
-      { name:'Venkat',         field:'Quantum Hardware',              talk:'Talk title to be announced', about:'Quantum hardware track — how qubits go from theory to real devices.', web:'#', photo:'images/speakers/venkat.jpg', days:['sat'] },
-      { name:'MVP',            field:'Quantum Applications',          talk:'Deep Dive: Real-World Quantum Use-Cases', about:'Explores real-world quantum applications in the Sunday deep dive.', web:'#', photo:'images/speakers/mvp.jpg', days:['sun'] },
-      { name:'To Be Decided',  field:'Announced soon',                talk:'Slot open — abstract coming soon', about:'Speaker to be announced. Watch this space.', web:'#', photo:'images/speakers/tbd.jpg', days:['sun'] },
+      { name:'Prof. Alok Kumar Pan',      field:'Quantum Foundations · Faculty', talk:'Foundations of Quantum Mechanics & Nonlocality', about:'Researcher in quantum foundations and nonlocality, probing the limits of quantum theory.', web:'#', photo:'images/speakers/alok-kumar-pan.png', days:['fri'] },
+      { name:'Dr. Sangkha Borah',         field:'Quantum Computing · Faculty',   talk:'Non-Markovian Feedback for Optimized Quantum Error Correction', about:'Researcher in Quantum Computing and Machine Learning', web:'https://www.iith.ac.in/phy/sangkha.borah/', photo:'images/speakers/sangkha.png', days:['fri'] },
+      { name:'IBM Quantum',               field:'Industry · Qiskit 101',         talk:'IBM Qiskit 101', about:'Hands-on introduction to quantum computing with Qiskit, delivered by IBM Quantum.', web:'https://quantum.ibm.com', days:['sat'], logoDark:'IBM_Quantum/Raster/RGB/IBM_Quantum_logotype_rev_RGB.png', logoLight:'IBM_Quantum/Raster/RGB/IBM_Quantum_logotype_pos_RGB.png' },
+      { name:'Quantum AI Global',         field:'Industry · Keynote',            talk:'Keynote — Col. Kapil Jaiswal', about:'Industry keynote from Quantum AI Global.', web:'#', days:['sat'], logo:'images/logos/quantum-ai-global.png' },
+      { name:'Animesh Taqbit',            field:'Quantum Software',              talk:'Talk title to be announced', about:'Works on quantum software and developer tooling across the Qiskit stack.', web:'#', photo:'images/speakers/animesh-taqbit.png', days:['sat'] },
+      { name:'Bijita Sarma',              field:'Qiskit · Beginners Track',      talk:'Your First Quantum Circuit with Qiskit', about:'Leads the beginners track — from zero to your first working quantum circuit.', web:'#', photo:'images/speakers/bijita.png', days:['sat'] },
+      { name:'Dr. Archak Purkayastha',    field:'Quantum Algorithms',            talk:'Deep Dive: Variational Quantum Algorithms', about:'Focuses on variational quantum algorithms and hands-on Qiskit deep dives.', web:'#', photo:'images/speakers/archak.png', days:['sun'] },
+      { name:'Venkat',                    field:'Quantum Hardware',              talk:'Talk title to be announced', about:'Quantum hardware track — how qubits go from theory to real devices.', web:'#', photo:'images/speakers/venkat.png', days:['sat'] },
+      { name:'Prof. M. V. Panduranga Rao', field:'Quantum Applications',         talk:'Deep Dive: Real-World Quantum Use-Cases', about:'Explores real-world quantum applications in the Sunday deep dive.', web:'#', photo:'images/speakers/mvp.webp', days:['sun'] },
+      { name:'To Be Decided',             field:'Announced soon',                talk:'Slot open — abstract coming soon', about:'Speaker to be announced. Watch this space.', web:'#', photo:'images/speakers/tbd.png', days:['sun'] },
     ];
+
+    // media block: a company logo (contained on panel) for industry talks, else a portrait photo
+    const mediaFull = sp => sp.logoDark
+      ? `<div class="portrait w-full aspect-[4/5] flex items-center justify-center bg-panel p-10">
+           <img src="${sp.logoDark}" alt="${sp.name}" class="only-dark max-h-full max-w-full object-contain" />
+           <img src="${sp.logoLight}" alt="${sp.name}" class="only-light max-h-full max-w-full object-contain" />
+         </div>`
+      : sp.logo
+      ? `<div class="portrait w-full aspect-[4/5] flex items-center justify-center bg-panel p-10">
+           <img src="${sp.logo}" onerror="this.onerror=null;this.src='${LOGO_PLACEHOLDER}'" alt="${sp.name}" class="max-h-full max-w-full object-contain" />
+         </div>`
+      : `<img src="${sp.photo}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'" alt="${sp.name}" class="portrait w-full aspect-[4/5] object-cover transition" loading="lazy" />`;
+    const mediaSmall = s => s.logoDark
+      ? `<div class="portrait w-20 h-20 sm:w-24 sm:h-24 shrink-0 flex items-center justify-center bg-panel p-3">
+           <img src="${s.logoDark}" alt="${s.name}" class="only-dark max-h-full max-w-full object-contain" />
+           <img src="${s.logoLight}" alt="${s.name}" class="only-light max-h-full max-w-full object-contain" />
+         </div>`
+      : s.logo
+      ? `<div class="portrait w-20 h-20 sm:w-24 sm:h-24 shrink-0 flex items-center justify-center bg-panel p-3">
+           <img src="${s.logo}" onerror="this.onerror=null;this.src='${LOGO_PLACEHOLDER}'" alt="${s.name}" class="max-h-full max-w-full object-contain" />
+         </div>`
+      : `<img src="${s.photo}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'" alt="${s.name}" class="portrait w-20 h-20 sm:w-24 sm:h-24 object-cover shrink-0" loading="lazy" />`;
 
     // full directory grid
     document.getElementById('speakerGrid').innerHTML = speakers.map((sp,i) => `
       <div class="group flex flex-col border-b border-r rule transition-colors hover:bg-panel">
         <div class="relative overflow-hidden">
-          <img src="${sp.photo}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'" alt="${sp.name}" class="portrait w-full aspect-[4/5] object-cover transition" loading="lazy" />
+          ${mediaFull(sp)}
           <span class="absolute top-3 right-3 font-mono text-[11px] text-white bg-black/45 px-2 py-1">${String(i+1).padStart(2,'0')}</span>
         </div>
         <div class="p-6 flex-1 flex flex-col">
@@ -617,7 +643,7 @@
     // per-day speaker spotlight inside each schedule tab
     const spotlight = s => `
       <a href="${s.web}" target="_blank" rel="noopener" class="group flex gap-4 border rule bg-bg p-4 hover:border-accent transition-colors">
-        <img src="${s.photo}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'" alt="${s.name}" class="portrait w-20 h-20 sm:w-24 sm:h-24 object-cover shrink-0" loading="lazy" />
+        ${mediaSmall(s)}
         <div class="min-w-0">
           <h4 class="font-serif text-lg text-ink group-hover:text-accent transition-colors">${s.name}</h4>
           <p class="mt-0.5 font-mono uppercase tracking-widest text-[10px] text-muted">${s.field}</p>
