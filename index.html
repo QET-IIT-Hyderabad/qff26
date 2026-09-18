@@ -334,7 +334,7 @@
             <ul data-timeline>
               <li data-item><span data-time>3:00 PM</span><span data-title>Accelequant</span><span data-tag>Keynote</span></li>
               <li data-item><span data-time>2:00 PM</span><span data-title>QuantumIntegrated Machines</span><span data-tag>Keynote</span></li>
-              <li data-item><span data-time>4:00 PM</span><span data-title>Animesh Taqbit</span><span data-tag>Keynote</span></li>
+              <li data-item><span data-time>4:00 PM</span><span data-title>Taqbit Labs</span><span data-tag>Keynote</span></li>
             </ul>
           </div>
         </div>
@@ -587,16 +587,17 @@
     const PLACEHOLDER = 'images/speakers/placeholder.svg';
     const LOGO_PLACEHOLDER = 'images/logos/placeholder.svg';
     const speakers = [
-      { name:'Prof. Alok Kumar Pan',      field:'Quantum Foundations · Faculty', talk:'Foundations of Quantum Mechanics & Nonlocality', about:'Researcher in quantum foundations and nonlocality, probing the limits of quantum theory.', web:'#', photo:'images/speakers/alok-kumar-pan.png', days:['fri'] },
+      // Speakers first (portraits) ...
       { name:'Dr. Sangkha Borah',         field:'Quantum Computing · Faculty',   talk:'Non-Markovian Feedback for Optimized Quantum Error Correction', about:'Researcher in Quantum Computing and Machine Learning', web:'https://www.iith.ac.in/phy/sangkha.borah/', photo:'images/speakers/sangkha.png', days:['fri'] },
-      { name:'IBM Quantum',               field:'Industry · Qiskit 101',         talk:'IBM Qiskit 101', about:'Hands-on introduction to quantum computing with Qiskit, delivered by IBM Quantum.', web:'https://quantum.ibm.com', days:['sat'], logoDark:'IBM_Quantum/Raster/RGB/IBM_Quantum_logotype_rev_RGB.png', logoLight:'IBM_Quantum/Raster/RGB/IBM_Quantum_logotype_pos_RGB.png' },
-      { name:'Quantum AI Global',         field:'Industry · Keynote',            talk:'Keynote — Col. Kapil Jaiswal', about:'Industry keynote from Quantum AI Global.', web:'#', days:['sat'], logo:'images/logos/quantum-ai-global.png' },
-      { name:'Animesh Taqbit',            field:'Quantum Software',              talk:'Talk title to be announced', about:'Works on quantum software and developer tooling across the Qiskit stack.', web:'#', photo:'images/speakers/animesh-taqbit.png', days:['sat'] },
+      { name:'Prof. Alok Kumar Pan',      field:'Quantum Foundations · Faculty', talk:'Foundations of Quantum Mechanics & Nonlocality', about:'Researcher in quantum foundations and nonlocality, probing the limits of quantum theory.', web:'#', photo:'images/speakers/alok-kumar-pan.png', days:['fri'] },
       { name:'Bijita Sarma',              field:'Qiskit · Beginners Track',      talk:'Your First Quantum Circuit with Qiskit', about:'Leads the beginners track — from zero to your first working quantum circuit.', web:'#', photo:'images/speakers/bijita.png', days:['sat'] },
       { name:'Dr. Archak Purkayastha',    field:'Quantum Algorithms',            talk:'Deep Dive: Variational Quantum Algorithms', about:'Focuses on variational quantum algorithms and hands-on Qiskit deep dives.', web:'#', photo:'images/speakers/archak.png', days:['sun'] },
-      { name:'Venkat',                    field:'Quantum Hardware',              talk:'Talk title to be announced', about:'Quantum hardware track — how qubits go from theory to real devices.', web:'#', photo:'images/speakers/venkat.png', days:['sat'] },
       { name:'Prof. M. V. Panduranga Rao', field:'Quantum Applications',         talk:'Deep Dive: Real-World Quantum Use-Cases', about:'Explores real-world quantum applications in the Sunday deep dive.', web:'#', photo:'images/speakers/mvp.webp', days:['sun'] },
       { name:'To Be Decided',             field:'Announced soon',                talk:'Slot open — abstract coming soon', about:'Speaker to be announced. Watch this space.', web:'#', photo:'images/speakers/tbd.png', days:['sun'] },
+      // ... then industry talks (company logos)
+      { name:'IBM Quantum',               field:'Industry · Qiskit 101',         talk:'IBM Qiskit 101', about:'Hands-on introduction to quantum computing with Qiskit, delivered by IBM Quantum.', web:'https://quantum.ibm.com', days:['sat'], logoDark:'IBM_Quantum/Raster/RGB/IBM_Quantum_logotype_rev_RGB.png', logoLight:'IBM_Quantum/Raster/RGB/IBM_Quantum_logotype_pos_RGB.png' },
+      { name:'Quantum AI Global',         field:'Industry · Keynote',            talk:'Keynote — Col. Kapil Jaiswal', about:'Industry keynote from Quantum AI Global.', web:'#', days:['sat'], logo:'images/logos/quantum-ai-global.png' },
+      { name:'Taqbit Labs',               field:'Industry · Quantum Software',   talk:'Talk title to be announced', about:'Quantum software and developer tooling across the Qiskit stack.', web:'#', days:['sat'], logo:'images/logos/taqbit-labs.png' },
     ];
 
     // media block: a company logo (contained on panel) for industry talks, else a portrait photo
