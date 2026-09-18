@@ -8,17 +8,15 @@ Drop each speaker's photo into this folder to replace the placeholder.
 
 | Speaker                      | Filename                | Status      |
 |------------------------------|-------------------------|-------------|
-| Prof. Alok Kumar Pan         | `alok-kumar-pan.png`    | ✅ provided |
 | Dr. Sangkha Borah            | `sangkha.png`           | ✅ provided |
-| Dr. Archak Purkayastha       | `archak.png`            | ✅ provided |
+| Prof. Alok Kumar Pan         | `alok-kumar-pan.png`    | ✅ provided |
 | Bijita Sarma                 | `bijita.png`            | ✅ provided |
-| Prof. M. V. Panduranga Rao   | `mvp.webp`              | ✅ provided |
-| Animesh Taqbit               | `animesh-taqbit.png`    | placeholder |
-| Venkat                       | `venkat.png`            | placeholder |
+| Dr. Archak Purkayastha       | `archak.png`            | ✅ provided |
+| Prof. M. V. Panduranga Rao   | `mvp.webp`              | held (removed from site for now; photo kept) |
 | To Be Decided                | `tbd.png`               | placeholder |
 
-Industry talks (IBM Quantum, Quantum AI Global) use company logos instead of
-portraits — see `../logos/README.md`.
+Industry talks (IBM Quantum, Quantum AI Global, Taqbit Labs) use company logos
+instead of portraits — see `../logos/README.md`.
 
 If you want a different image format for any speaker (e.g. `.jpg` or `.webp`),
 just update that speaker's `photo:` path in `index.html`.

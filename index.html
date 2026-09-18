@@ -334,7 +334,7 @@
             <ul data-timeline>
               <li data-item><span data-time>3:00 PM</span><span data-title>Accelequant</span><span data-tag>Keynote</span></li>
               <li data-item><span data-time>2:00 PM</span><span data-title>QuantumIntegrated Machines</span><span data-tag>Keynote</span></li>
-              <li data-item><span data-time>4:00 PM</span><span data-title>Animesh Taqbit</span><span data-tag>Keynote</span></li>
+              <li data-item><span data-time>4:00 PM</span><span data-title>Taqbit Labs</span><span data-tag>Keynote</span></li>
             </ul>
           </div>
         </div>
@@ -346,7 +346,6 @@
         <p class="eyebrow text-grape mb-2">Morning Deep Dive &middot; <span class="text-muted">can split into 45 mins</span></p>
         <ul data-timeline>
           <li data-item><span data-time>10:00 AM</span><span data-title>Dr. Archak Purkayastha</span><span data-tag>Deep Dive</span></li>
-  
           <li data-item><span data-time>12:00 PM</span><span data-title>Dr. Bijita</span><span data-tag>Deep Dive</span></li>
         </ul>
         <p class="eyebrow text-grape mt-8 mb-4">Afternoon &middot; Hands-on Tracks</p>
@@ -587,16 +586,16 @@
     const PLACEHOLDER = 'images/speakers/placeholder.svg';
     const LOGO_PLACEHOLDER = 'images/logos/placeholder.svg';
     const speakers = [
-      { name:'Prof. Alok Kumar Pan',      field:'Quantum Foundations · Faculty', talk:'Foundations of Quantum Mechanics & Nonlocality', about:'Researcher in quantum foundations and nonlocality, probing the limits of quantum theory.', web:'#', photo:'images/speakers/alok-kumar-pan.png', days:['fri'] },
+      // Speakers first (portraits) ...
       { name:'Dr. Sangkha Borah',         field:'Quantum Computing · Faculty',   talk:'Non-Markovian Feedback for Optimized Quantum Error Correction', about:'Researcher in Quantum Computing and Machine Learning', web:'https://www.iith.ac.in/phy/sangkha.borah/', photo:'images/speakers/sangkha.png', days:['fri'] },
+      { name:'Prof. Alok Kumar Pan',      field:'Quantum Foundations · Faculty', talk:'Talk details coming soon', about:'Researcher in quantum foundations and nonlocality, probing the limits of quantum theory.', web:'https://iith.ac.in/phy/akp/', photo:'images/speakers/alok-kumar-pan.png', days:['fri'] },
+      { name:'Bijita Sarma',              field:'Qiskit · Beginners Track',      talk:'Talk details coming soon', about:'Leads the beginners track — from zero to your first working quantum circuit.', web:'#', photo:'images/speakers/bijita.png', days:['sat'] },
+      { name:'Dr. Archak Purkayastha',    field:'Quantum Algorithms',            talk:'Talk details coming soon', about:'Focuses on variational quantum algorithms and hands-on Qiskit deep dives.', web:'https://www.iith.ac.in/phy/archak.p/', photo:'images/speakers/archak.png', days:['sun'] },
+      { name:'To Be Decided',             field:'Announced soon',                talk:'Slot open — abstract coming soon', about:'Speaker to be announced. Watch this space.', web:'#', photo:'images/speakers/tbd.png', days:['sun'] },
+      // ... then industry talks (company logos)
       { name:'IBM Quantum',               field:'Industry · Qiskit 101',         talk:'IBM Qiskit 101', about:'Hands-on introduction to quantum computing with Qiskit, delivered by IBM Quantum.', web:'https://quantum.ibm.com', days:['sat'], logoDark:'IBM_Quantum/Raster/RGB/IBM_Quantum_logotype_rev_RGB.png', logoLight:'IBM_Quantum/Raster/RGB/IBM_Quantum_logotype_pos_RGB.png' },
       { name:'Quantum AI Global',         field:'Industry · Keynote',            talk:'Keynote — Col. Kapil Jaiswal', about:'Industry keynote from Quantum AI Global.', web:'#', days:['sat'], logo:'images/logos/quantum-ai-global.png' },
-      { name:'Animesh Taqbit',            field:'Quantum Software',              talk:'Talk title to be announced', about:'Works on quantum software and developer tooling across the Qiskit stack.', web:'#', photo:'images/speakers/animesh-taqbit.png', days:['sat'] },
-      { name:'Bijita Sarma',              field:'Qiskit · Beginners Track',      talk:'Your First Quantum Circuit with Qiskit', about:'Leads the beginners track — from zero to your first working quantum circuit.', web:'#', photo:'images/speakers/bijita.png', days:['sat'] },
-      { name:'Dr. Archak Purkayastha',    field:'Quantum Algorithms',            talk:'Deep Dive: Variational Quantum Algorithms', about:'Focuses on variational quantum algorithms and hands-on Qiskit deep dives.', web:'#', photo:'images/speakers/archak.png', days:['sun'] },
-      { name:'Venkat',                    field:'Quantum Hardware',              talk:'Talk title to be announced', about:'Quantum hardware track — how qubits go from theory to real devices.', web:'#', photo:'images/speakers/venkat.png', days:['sat'] },
-      
-      { name:'To Be Decided',             field:'Announced soon',                talk:'Slot open — abstract coming soon', about:'Speaker to be announced. Watch this space.', web:'#', photo:'images/speakers/tbd.png', days:['sun'] },
+      { name:'Taqbit Labs',               field:'Industry · Quantum Software',   talk:'Talk title to be announced', about:'Quantum software and developer tooling across the Qiskit stack.', web:'#', days:['sat'], logo:'images/logos/taqbit-labs.png' },
     ];
 
     // media block: a company logo (contained on panel) for industry talks, else a portrait photo
@@ -631,26 +630,27 @@
         <div class="p-6 flex-1 flex flex-col">
           <h3 class="font-serif text-2xl text-ink group-hover:text-accent transition-colors">${sp.name}</h3>
           <p class="mt-1 font-mono uppercase tracking-widest text-[11px] text-muted">${sp.field}</p>
-          <div class="mt-5 pt-4 border-t rule">
-            <p class="eyebrow mb-1 text-accent">Talk</p>
-            <p class="font-serif text-lg text-ink leading-snug">${sp.talk}</p>
-          </div>
-          <a href="${sp.web}" target="_blank" rel="noopener" class="mt-4 inline-block font-mono uppercase tracking-widest text-[11px] text-muted hover:text-accent transition-colors">Website &#8599;</a>
+          ${sp.web && sp.web !== '#' ? `<a href="${sp.web}" target="_blank" rel="noopener" class="mt-4 inline-block font-mono uppercase tracking-widest text-[11px] text-muted hover:text-accent transition-colors">Website &#8599;</a>` : ''}
         </div>
       </div>
     `).join('');
 
     // per-day speaker spotlight inside each schedule tab
-    const spotlight = s => `
-      <a href="${s.web}" target="_blank" rel="noopener" class="group flex gap-4 border rule bg-bg p-4 hover:border-accent transition-colors">
+    const spotlight = s => {
+      const hasWeb = s.web && s.web !== '#';
+      const tag = hasWeb ? 'a' : 'div';
+      const attrs = hasWeb ? `href="${s.web}" target="_blank" rel="noopener"` : '';
+      return `
+      <${tag} ${attrs} class="group flex gap-4 border rule bg-bg p-4 hover:border-accent transition-colors">
         ${mediaSmall(s)}
         <div class="min-w-0">
           <h4 class="font-serif text-lg text-ink group-hover:text-accent transition-colors">${s.name}</h4>
           <p class="mt-0.5 font-mono uppercase tracking-widest text-[10px] text-muted">${s.field}</p>
           <p class="mt-2 text-sm text-muted leading-snug">${s.about}</p>
-          <span class="mt-2 inline-block font-mono uppercase tracking-widest text-[10px] text-accent">Website &#8599;</span>
+          ${hasWeb ? `<span class="mt-2 inline-block font-mono uppercase tracking-widest text-[10px] text-accent">Website &#8599;</span>` : ''}
         </div>
-      </a>`;
+      </${tag}>`;
+    };
     document.querySelectorAll('[data-day-speakers]').forEach(box => {
       const day = box.getAttribute('data-day-speakers');
       const list = speakers.filter(s => s.days.includes(day));
