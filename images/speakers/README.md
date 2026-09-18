@@ -12,7 +12,7 @@ Drop each speaker's photo into this folder to replace the placeholder.
 | Prof. Alok Kumar Pan         | `alok-kumar-pan.png`    | ✅ provided |
 | Bijita Sarma                 | `bijita.png`            | ✅ provided |
 | Dr. Archak Purkayastha       | `archak.png`            | ✅ provided |
-| Prof. M. V. Panduranga Rao   | `mvp.webp`              | ✅ provided |
+| Prof. M. V. Panduranga Rao   | `mvp.webp`              | held (removed from site for now; photo kept) |
 | To Be Decided                | `tbd.png`               | placeholder |
 
 Industry talks (IBM Quantum, Quantum AI Global, Taqbit Labs) use company logos
