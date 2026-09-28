@@ -574,7 +574,7 @@
     const LOGO_PLACEHOLDER = 'images/logos/placeholder.svg';
     const speakers = [
       // Speakers first (portraits) ...
-      { name:'Dr. Sangkha Borah',         field:'Quantum Computing · Faculty',   talk:'Non-Markovian Feedback for Optimized Quantum Error Correction', about:'Researcher in Quantum Computing and Machine Learning', web:'https://www.iith.ac.in/phy/sangkha.borah/', photo:'images/speakers/sangkha.png', days:['fri'] },
+      { name:'Dr. Sangkha Borah',         field:'Quantum Computing · Faculty',   talk:'Talk details coming soon', about:'Researcher in Quantum Computing and Machine Learning', web:'https://www.iith.ac.in/phy/sangkha.borah/', photo:'images/speakers/sangkha.png', days:['fri'] },
       { name:'Dr. Alok Kumar Pan',        field:'Quantum Foundations · Faculty', talk:'Talk details coming soon', about:'Researcher in quantum foundations and nonlocality, probing the limits of quantum theory.', web:'https://iith.ac.in/phy/akp/', photo:'images/speakers/alok-kumar-pan.png', days:['fri'] },
       { name:'Dr. Archak Purkayastha',    field:'Quantum Algorithms',            talk:'Deep Dive: Working with Qubits', about:'Focuses on variational quantum algorithms and hands-on Qiskit deep dives.', web:'https://www.iith.ac.in/phy/archak.p/', photo:'images/speakers/archak.png', days:['sat'] },
       { name:'Prof. M.V. Panduranga Rao', field:'Quantum Networks',              talk:'Quantum Networks', about:'Deep dive on quantum networks — joining Sunday morning online.', web:'#', photo:'images/speakers/mvp.webp', days:['sun'] },
@@ -608,6 +608,9 @@
          </div>`
       : `<img src="${s.photo}" onerror="this.onerror=null;this.src='${PLACEHOLDER}'" alt="${s.name}" class="portrait w-20 h-20 sm:w-24 sm:h-24 object-cover shrink-0" loading="lazy" />`;
 
+    // show a talk title only when it's a real title, not a placeholder
+    const showTalk = t => t && !/coming soon|to be announced|slot open/i.test(t);
+
     // full directory grid
     document.getElementById('speakerGrid').innerHTML = speakers.map((sp,i) => `
       <div class="group flex flex-col border-b border-r rule transition-colors hover:bg-panel">
@@ -618,6 +621,7 @@
         <div class="p-6 flex-1 flex flex-col">
           <h3 class="font-serif text-2xl text-ink group-hover:text-accent transition-colors">${sp.name}</h3>
           <p class="mt-1 font-mono uppercase tracking-widest text-[11px] text-muted">${sp.field}</p>
+          ${showTalk(sp.talk) ? `<div class="mt-5 pt-4 border-t rule"><p class="eyebrow mb-1 text-accent">Talk</p><p class="font-serif text-lg text-ink leading-snug">${sp.talk}</p></div>` : ''}
           ${sp.web && sp.web !== '#' ? `<a href="${sp.web}" target="_blank" rel="noopener" class="mt-4 inline-block font-mono uppercase tracking-widest text-[11px] text-muted hover:text-accent transition-colors">Website &#8599;</a>` : ''}
         </div>
       </div>
@@ -635,6 +639,7 @@
           <h4 class="font-serif text-lg text-ink group-hover:text-accent transition-colors">${s.name}</h4>
           <p class="mt-0.5 font-mono uppercase tracking-widest text-[10px] text-muted">${s.field}</p>
           <p class="mt-2 text-sm text-muted leading-snug">${s.about}</p>
+          ${showTalk(s.talk) ? `<p class="mt-2 font-serif text-base text-ink leading-snug">${s.talk}</p>` : ''}
           ${hasWeb ? `<span class="mt-2 inline-block font-mono uppercase tracking-widest text-[10px] text-accent">Website &#8599;</span>` : ''}
         </div>
       </${tag}>`;
